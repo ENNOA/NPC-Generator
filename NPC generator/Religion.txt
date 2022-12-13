@@ -1,0 +1,1 @@
+Abbot/Abbess, Acolyte, Almoner, Archbishop, Bishop, Cardinal, Chaplain, Clergy, Cleric, Cultist, Cult, Leader, Diviner, Exorcist, Friar, High Priest, Inquisitor, Missionary, Monk, Nun, Paladin, Pardoner, Priest, Prophet, Sexton, Templar
