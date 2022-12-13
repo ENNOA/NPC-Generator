@@ -1,4 +1,4 @@
-package description;
+package NPCGen;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,7 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
-public class GUI extends JFrame implements ActionListener {
+public class NPC_GUI extends JFrame implements ActionListener {
 		
 		//declarations
 		JButton numberButton;
@@ -39,7 +39,7 @@ public class GUI extends JFrame implements ActionListener {
 		Border dash = BorderFactory.createDashedBorder(new Color(0,0,0));
 		
 		
-		public GUI () {
+		public NPC_GUI () {
 			//panels
 			topPanel = new JPanel();
 			midPanel = new JPanel();
@@ -91,8 +91,10 @@ public class GUI extends JFrame implements ActionListener {
 			whereFrom.setForeground(new Color(0xf0ffe1));  
 			whereFrom.setBackground(new Color(0x73964f));
 			
+			//scroll
+			test = new JScrollPane();
+			
 			//adding the components
-			//Components
 			this.add(topPanel);
 			this.getContentPane().setLayout(null);
 			topPanel.add(welcome);
@@ -103,6 +105,7 @@ public class GUI extends JFrame implements ActionListener {
 			midPanel.add(nation);
 			this.add(lowPanel);
 			lowPanel.add(title);
+			lowPanel.add(test);
 
 			
 			
@@ -150,7 +153,7 @@ public class GUI extends JFrame implements ActionListener {
 	*/
 	
 	public static void main(String[] args) throws NullPointerException, IOException{
-		GUI frame = new GUI();
+		NPC_GUI frame = new NPC_GUI();
 		/*
         Scanner input= new Scanner(System.in);
         String sentinel;
