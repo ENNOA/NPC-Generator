@@ -187,6 +187,7 @@ public class NPC_GUI extends JFrame implements ActionListener {
                     } catch(ArrayIndexOutOfBoundsException ex) {
                     	System.out.println(ex.getMessage());
                     }
+			//remove the system.out to obtain the string and print the String to the GUI
                     System.out.println(where.toString());
                     try {
                     who.randomize(where.getRace());
@@ -194,6 +195,7 @@ public class NPC_GUI extends JFrame implements ActionListener {
                     	System.out.println(ex.getMessage());
                     }
                     who.profession();
+			//remove the system.out to obtain the string and print the String to the GUI
                     System.out.println(who.toString());
                     System.out.println("\n");
             }
