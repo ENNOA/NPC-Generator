@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
@@ -37,6 +38,7 @@ public class NPC_GUI extends JFrame implements ActionListener {
 		JTextField howMany;
 		JTextField whereFrom;
 		JScrollPane test;
+		JTextArea results;
 
 		Border dash = BorderFactory.createDashedBorder(new Color(0,0,0));
 		
@@ -63,7 +65,7 @@ public class NPC_GUI extends JFrame implements ActionListener {
 			nation.setFont(new Font(Font.DIALOG_INPUT, Font.ITALIC, 14));
 			title = new JLabel("New NPC Generation");
 			title.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 24));
-			menu = new JLabel("");
+			menu = new JLabel(test());
 			
 			//welcome label
 			
@@ -76,17 +78,6 @@ public class NPC_GUI extends JFrame implements ActionListener {
 			numberButton.setForeground(Color.BLACK);
 			numberButton.setBackground(new Color(0x5d5d5d));
 			numberButton.setBorder(BorderFactory.createRaisedBevelBorder());
-			
-			/*
-			//nation selection button
-			nationButton = new JButton();
-			nationButton.setBounds(200, 200, 100, 150);
-			nationButton.addActionListener(this);
-			nationButton.setText("Submit"); 
-			nationButton.setForeground(Color.BLACK);
-			nationButton.setBackground(new Color(0x5d5d5d));
-			nationButton.setBorder(BorderFactory.createRaisedBevelBorder());
-			*/
 			
 			//number of NPCs
 			howMany = new JTextField();
@@ -104,6 +95,9 @@ public class NPC_GUI extends JFrame implements ActionListener {
 			
 			//scroll
 			test = new JScrollPane();
+			
+			//text area
+			results = new JTextArea();
 			
 			//combo box for nation selection
 			String[] nations = {"Random", "Breland", "Zilargo", "Darguun", "Valenar", "Q'Barra","The Talenta Plains", "Karrnath",
@@ -140,12 +134,10 @@ public class NPC_GUI extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		int loops=0;
 		int whereFrom=0;
-		if (e.getSource()==howMany){				 
+		if (e.getSource()==numberButton){				 
 			System.out.println("Generate how many NPCs? "+howMany.getText());  
 			loops=Integer.parseInt(howMany.getText());
-		}
 		
-		if (e.getSource()==homeland) {
 			System.out.println(homeland.getSelectedIndex());
 			whereFrom = (homeland.getSelectedIndex());
 		}
@@ -153,10 +145,8 @@ public class NPC_GUI extends JFrame implements ActionListener {
 		try {
 			builder(loops,whereFrom);
 		} catch (NullPointerException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
@@ -164,15 +154,15 @@ public class NPC_GUI extends JFrame implements ActionListener {
 
 	
 	public static void builder(int x, int y) throws NullPointerException, IOException{
-        Scanner input= new Scanner(System.in);
+        //Scanner input= new Scanner(System.in);
         //String sentinel;
         //int npcs=0;
         //int homeland;
         //do{
-            System.out.print("Generate how many NPCs? ");
+           // System.out.print("Generate how many NPCs? ");
             //npcs=input.nextInt();
-            System.out.println();
-            menu();
+            //System.out.println();
+           // menu();
             //homeland=input.nextInt();
             System.out.println();
                 for(int i=0;i<x;i++){    
@@ -187,7 +177,7 @@ public class NPC_GUI extends JFrame implements ActionListener {
                     } catch(ArrayIndexOutOfBoundsException ex) {
                     	System.out.println(ex.getMessage());
                     }
-                    System.out.println(where.toString());
+                   System.out.println(where.toString());
                     try {
                     who.randomize(where.getRace());
                     }catch (NullPointerException ex) {
@@ -203,8 +193,8 @@ public class NPC_GUI extends JFrame implements ActionListener {
            // sentinel=input.next();
             
         //} while(sentinel.equalsIgnoreCase("yes"));
-        System.out.println("Thank you! Have a fun game!");
-        input.close();
+        //System.out.println("Thank you! Have a fun game!");
+      //  input.close();
     }
     
     public static void menu() {
@@ -215,6 +205,11 @@ public class NPC_GUI extends JFrame implements ActionListener {
         System.out.print("\n 12 = The Demon Wastes     13 = The Shadow Marches    14 = Droaam                15 = The Lhazaar Principalities \n");
         System.out.print("\n Enter nation number here: ");
     	
+    }
+    
+    public static String test() {
+    	String test = "BORK! \nBORK!";
+    	return test;
     }
     
     public static void main(String[] args) throws NullPointerException, IOException{
