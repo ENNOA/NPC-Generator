@@ -138,7 +138,6 @@ public class NPC_GUI extends JFrame implements ActionListener {
 		if (e.getSource()==numberButton){				 
 			System.out.println("Generate how many NPCs? "+howMany.getText());  
 			loops=Integer.parseInt(howMany.getText());
-			System.out.println(homeland.getSelectedIndex());
 			whereFrom = (homeland.getSelectedIndex());
 		}
 		try {
@@ -176,7 +175,7 @@ public class NPC_GUI extends JFrame implements ActionListener {
 	        who.profession();
 	        System.out.println(who.toString());
 	        System.out.println("\n");
-	        results= where.toString()+who.toString();
+	        results= where.toString()+"\n"+who.toString();
 		}
 		return results;
             
