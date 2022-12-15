@@ -94,10 +94,12 @@ public class NPC_GUI extends JFrame implements ActionListener {
 			whereFrom.setBackground(new Color(0x73964f));
 			
 			//scroll
-			test = new JScrollPane();
+			test = new JScrollPane(results);
+			test.setBounds(20,20,400,400);
 			
 			//text area
 			results = new JTextArea();
+			results.setEditable(false);
 			
 			//combo box for nation selection
 			String[] nations = {"Random", "Breland", "Zilargo", "Darguun", "Valenar", "Q'Barra","The Talenta Plains", "Karrnath",
@@ -118,9 +120,8 @@ public class NPC_GUI extends JFrame implements ActionListener {
 			this.add(lowPanel);
 			lowPanel.add(title);
 			lowPanel.add(test);
-			lowPanel.add(menu);
+			lowPanel.add(results);
 
-			
 			
 			// Finish setting up the frame
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -137,58 +138,48 @@ public class NPC_GUI extends JFrame implements ActionListener {
 		if (e.getSource()==numberButton){				 
 			System.out.println("Generate how many NPCs? "+howMany.getText());  
 			loops=Integer.parseInt(howMany.getText());
-		
 			System.out.println(homeland.getSelectedIndex());
 			whereFrom = (homeland.getSelectedIndex());
 		}
-		
 		try {
-			builder(loops,whereFrom);
+			results.setText(builder(loops,whereFrom));
 		} catch (NullPointerException e1) {
+			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (IOException e1) {
+			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+
 		
 	}
 
 	
-	public static void builder(int x, int y) throws NullPointerException, IOException{
-        //Scanner input= new Scanner(System.in);
-        //String sentinel;
-        //int npcs=0;
-        //int homeland;
-        //do{
-           // System.out.print("Generate how many NPCs? ");
-            //npcs=input.nextInt();
-            //System.out.println();
-           // menu();
-            //homeland=input.nextInt();
-            System.out.println();
-                for(int i=0;i<x;i++){    
-                    System.out.println("New NPC Generation");
-                    System.out.println("------------------");
-                    //System.out.println();
-                    
-                    descGen who= new descGen();
-                    namesAndOrigins where=new namesAndOrigins();
-                    try {
-                    where.randomize(y);
-                    } catch(ArrayIndexOutOfBoundsException ex) {
-                    	System.out.println(ex.getMessage());
-                    }
-                   System.out.println(where.toString());
-                    try {
-                    who.randomize(where.getRace());
-                    }catch (NullPointerException ex) {
-                    	System.out.println(ex.getMessage());
-                    }
-                    who.profession();
-                    System.out.println(who.toString());
-                    System.out.println("\n");
-            }
+	public static String builder(int x, int y) throws NullPointerException, IOException{
+		String results = null;
+		for(int i=0;i<x;i++){    
+	        System.out.println("New NPC Generation");
+	        System.out.println("------------------");
+	        descGen who= new descGen();
+	        namesAndOrigins where=new namesAndOrigins();
+	        try {
+	        where.randomize(y);
+	        } catch(ArrayIndexOutOfBoundsException ex) {
+	        	System.out.println(ex.getMessage());
+	        }
+	       System.out.println(where.toString());
+	        try {
+	        who.randomize(where.getRace());
+	        }catch (NullPointerException ex) {
+	        	System.out.println(ex.getMessage());
+	        }
+	        who.profession();
+	        System.out.println(who.toString());
+	        System.out.println("\n");
+	        results= where.toString()+who.toString();
+		}
+		return results;
             
-            System.out.println("\n");
            // System.out.print("Start over? Yes or No?: ");
            // sentinel=input.next();
             
