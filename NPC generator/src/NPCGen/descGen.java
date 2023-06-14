@@ -52,8 +52,8 @@ public class descGen{
         
         else if (specie.equalsIgnoreCase("Gnome")){
             age=(gen.nextInt(40,450));
-            height= (roll.getDiceRoll(6,2)+34);
-            weight= (height-35)*2;
+            height= (roll.getDiceRoll(4,2)+34);
+            weight= (height-35)+35;
             eyes= eyeColor[(gen.nextInt(eyeColor.length))];
             hair= hairColor[(gen.nextInt(hairColor.length))]+" "+hairstyle[(gen.nextInt(hairstyle.length))];
         }
@@ -69,7 +69,7 @@ public class descGen{
         else if (specie.equalsIgnoreCase("Halfling")){
             age=(gen.nextInt(20,150));
             height= (roll.getDiceRoll(6,2)+31);
-            weight= (height-31)*(roll.getDiceRoll(6,1)+35);
+            weight= (height-31)+35;
             eyes= eyeColor[(gen.nextInt(eyeColor.length))];
             hair= hairColor[(gen.nextInt(hairColor.length))]+" "+hairstyle[(gen.nextInt(hairstyle.length))];
         }
@@ -187,20 +187,20 @@ public class descGen{
     
     public void profession() throws IOException{
     	//1D arrays
-    	String[] Agri=lineReader(new File("Agriculture.txt"));
-    	String[] Arch=lineReader(new File("Architecture.txt"));
-    	String[] Arts=lineReader(new File("Arts.txt"));
-    	String[] Busi=lineReader(new File("Business.txt"));
-    	String[] Crim=lineReader(new File("Crime.txt"));
-    	String[] Educ=lineReader(new File("Education.txt"));
-    	String[] Law=lineReader(new File("Law.txt"));
-    	String[] Health=lineReader(new File("Health.txt"));
-    	String[] Hosp=lineReader(new File("Hospitality.txt"));
-    	String[] Magic=lineReader(new File("Magic.txt"));
-    	String[] War=lineReader(new File("War.txt"));
-    	String[] Relig=lineReader(new File("Religion.txt"));
-    	String[] Transport=lineReader(new File("Transportation.txt"));
-    	String[] Unem=lineReader(new File("Unemployed.txt"));
+    	String[] Agri=lineReader(new File("/NPC generator/src/texts/Agriculture.txt"));
+    	String[] Arch=lineReader(new File("/NPC generator/src/texts/Architecture.txt"));
+    	String[] Arts=lineReader(new File("/NPC generator/src/texts/Arts.txt"));
+    	String[] Busi=lineReader(new File("/NPC generator/src/texts/Business.txt"));
+    	String[] Crim=lineReader(new File("/NPC generator/src/texts/Crime.txt"));
+    	String[] Educ=lineReader(new File("/NPC generator/src/texts/Education.txt"));
+    	String[] Law=lineReader(new File("/NPC generator/src/texts/Law.txt"));
+    	String[] Health=lineReader(new File("/NPC generator/src/texts/Health.txt"));
+    	String[] Hosp=lineReader(new File("/NPC generator/src/texts/Hospitality.txt"));
+    	String[] Magic=lineReader(new File("/NPC generator/src/texts/Magic.txt"));
+    	String[] War=lineReader(new File("/NPC generator/src/texts/War.txt"));
+    	String[] Relig=lineReader(new File("/NPC generator/src/texts/Religion.txt"));
+    	String[] Transport=lineReader(new File("/NPC generator/src/texts/Transportation.txt"));
+    	String[] Unem=lineReader(new File("/NPC generator/src/texts/Unemployed.txt"));
 
         int category=gen.nextInt(1,15);
         switch (category) {

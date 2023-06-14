@@ -36,17 +36,17 @@ public class namesAndOrigins {
     
     public void randomize(int origin) throws IOException{
     	   //2D arrays
-        String[][] aundairanNames=reader(new File("aundairanNames.txt"));
-        String[][] brelishNames=reader(new File("brelishNames.txt"));
-    	String[][] karrnathiNames=reader(new File("karrnathiNames.txt"));
-    	String[][] thraneNames=reader(new File("thraneNames.txt"));                    
-    	String[][] goblinNames=reader(new File("goblinNames.txt"));
-    	String[][] gnomeNames=reader(new File("gnomeNames.txt"));
-     	String[][] dwarfNames=reader(new File("dwarfNames.txt"));
-        String[][] halflingNames=reader(new File("halflingNames.txt"));
-        String[][] elfNames=reader(new File("elfNames.txt"));
-        String[][] halfOrcNames=reader(new File("halfOrcNames.txt"));
-        String[][] scalyNames=reader(new File("scalyNames.txt"));
+        String[][] aundairanNames=reader(new File(getClass().getResource("/texts/aundairanNames.txt").getFile()));
+        String[][] brelishNames=reader(new File("//NPC generator//src//texts//brelishNames.txt"));
+    	String[][] karrnathiNames=reader(new File("//NPC generator//src//texts//karrnathiNames.txt"));
+    	String[][] thraneNames=reader(new File("//NPC generator//src//texts//thraneNames.txt"));                    
+    	String[][] goblinNames=reader(new File("//NPC generator//src//texts//goblinNames.txt"));
+    	String[][] gnomeNames=reader(new File("//NPC generator//src//texts//gnomeNames.txt"));
+     	String[][] dwarfNames=reader(new File("//NPC generator//src//texts//dwarfNames.txt"));
+        String[][] halflingNames=reader(new File("//NPC generator//src//texts//halflingNames.txt"));
+        String[][] elfNames=reader(new File("//NPC generator//src//texts//elfNames.txt"));
+        String[][] halfOrcNames=reader(new File("//NPC generator//src//texts//halfOrcNames.txt"));
+        String[][] scalyNames=reader(new File("//NPC generator//src//texts//scalyNames.txt"));
         
         if(gender==1)
             sex= "Male";

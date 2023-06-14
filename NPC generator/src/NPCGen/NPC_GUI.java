@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -39,6 +40,7 @@ public class NPC_GUI extends JFrame implements ActionListener {
 		JTextField whereFrom;
 		JScrollPane test;
 		JTextArea results;
+		private static ImageIcon planes = new ImageIcon(NPC_GUI.class.getResource("/images/The Planes of Eberron.png"));
 
 		Border dash = BorderFactory.createDashedBorder(new Color(0,0,0));
 		
@@ -124,6 +126,7 @@ public class NPC_GUI extends JFrame implements ActionListener {
 
 			
 			// Finish setting up the frame
+			this.setIconImage(planes.getImage());
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			this.setLayout(new FlowLayout());
 			this.pack();
@@ -179,12 +182,7 @@ public class NPC_GUI extends JFrame implements ActionListener {
 		}
 		return results;
             
-           // System.out.print("Start over? Yes or No?: ");
-           // sentinel=input.next();
-            
-        //} while(sentinel.equalsIgnoreCase("yes"));
-        //System.out.println("Thank you! Have a fun game!");
-      //  input.close();
+
     }
     
     public static void menu() {
