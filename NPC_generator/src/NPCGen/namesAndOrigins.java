@@ -466,6 +466,14 @@ public class namesAndOrigins {
     public String toString(){
         return    "Race: "+race+"\nGender: "+sex+"\nNation: "+nation+"\nName: "+firstName+" "+surname+" "+clanName;
     }
+    public void addInfo(NPC_Object npc){
+        npc.setRace = race;
+        npc.setSex = sex;
+        npc.setNationality = nation;
+        npc.setfName = firstName;
+        npc.setsName = surname;
+        npc.setcName = clanName;
+    }
     
   
 	public String[][] reader(File filename) throws IOException {

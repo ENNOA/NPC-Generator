@@ -11,6 +11,7 @@ import java.util.*;
 public class npc{
     public static void main(String[] args)throws NullPointerException, IOException{
         Scanner input= new Scanner(System.in);
+        List<NPC_Object> npcList = new ArrayList<>();
         String sentinel;
         int npcs=0;
         int homeland;
@@ -25,24 +26,27 @@ public class npc{
                 for(int i=0;i<npcs;i++){    
                     System.out.println("New NPC Generation");
                     System.out.println("------------------");
-                    //System.out.println();
                     
+                    NPC_Object npc = new NPC_Object();
                     descGen who= new descGen();
                     namesAndOrigins where=new namesAndOrigins();
+
                     try {
-                    where.randomize(homeland);
+                    where.randomize(npc, homeland);
                     } catch(ArrayIndexOutOfBoundsException ex) {
                     	System.out.println(ex.getMessage());
                     }
                     System.out.println(where.toString());
                     try {
-                    who.randomize(where.getRace());
+                    who.randomize(npc, npc.getRace());
                     }catch (NullPointerException ex) {
                     	System.out.println(ex.getMessage());
                     }
-                    who.profession();
-                    System.out.println(who.toString());
+                    who.profession(npc);
+                    System.out.println(npc.toString());
                     System.out.println("\n");
+
+                    npcList.add(npc);
             }
             
             System.out.println("\n");

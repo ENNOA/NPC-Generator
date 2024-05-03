@@ -102,6 +102,7 @@ public class NPC_GUI extends JFrame implements ActionListener {
 			//text area
 			results = new JTextArea();
 			results.setEditable(false);
+			test = new JScrollPane(results);
 			
 			//combo box for nation selection
 			String[] nations = {"Random", "Breland", "Zilargo", "Darguun", "Valenar", "Q'Barra","The Talenta Plains", "Karrnath",
@@ -135,55 +136,52 @@ public class NPC_GUI extends JFrame implements ActionListener {
 
 		}
 		
-	public void actionPerformed(ActionEvent e) {
-		int loops=0;
-		int whereFrom=0;
-		if (e.getSource()==numberButton){				 
-			System.out.println("Generate how many NPCs? "+howMany.getText());  
-			loops=Integer.parseInt(howMany.getText());
-			whereFrom = (homeland.getSelectedIndex());
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == numberButton) {
+				int numberOfNPCs = Integer.parseInt(howMany.getText().trim());
+				int homelandIndex = homeland.getSelectedIndex();
+				
+				try {
+					List<NPC_Object> npcList = builder(numberOfNPCs, homelandIndex);
+					StringBuilder displayText = new StringBuilder();
+					for (NPC_Object npc : npcList) {
+						displayText.append(npc.toString()).append("\n\n");
+					}
+					results.setText(displayText.toString());
+				} catch (Exception ex) {
+					results.setText("Error generating NPCs: " + ex.getMessage());
+					ex.printStackTrace();
+				}
+			}
 		}
-		try {
-			results.setText(builder(loops,whereFrom));
-		} catch (NullPointerException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
 		
-	}
 
 	
-	public static String builder(int x, int y) throws NullPointerException, IOException{
-		String results = null;
-		for(int i=0;i<x;i++){    
-	        System.out.println("New NPC Generation");
-	        System.out.println("------------------");
-	        descGen who= new descGen();
-	        namesAndOrigins where=new namesAndOrigins();
-	        try {
-	        where.randomize(y);
-	        } catch(ArrayIndexOutOfBoundsException ex) {
-	        	System.out.println(ex.getMessage());
-	        }
-	       System.out.println(where.toString());
-	        try {
-	        who.randomize(where.getRace());
-	        }catch (NullPointerException ex) {
-	        	System.out.println(ex.getMessage());
-	        }
-	        who.profession();
-	        System.out.println(who.toString());
-	        System.out.println("\n");
-	        results= where.toString()+"\n"+who.toString();
+	public static List<NPC_Object> builder(int numberOfNPCs, int homelandIndex) throws NullPointerException, IOException {
+		List<NPC_Object> npcList = new ArrayList<>();
+		for (int i = 0; i < numberOfNPCs; i++) {
+			NPC_Object npc = new NPC_Object(); // Ensure you have a suitable constructor
+			descGen who = new descGen();
+			namesAndOrigins where = new namesAndOrigins();
+			
+			try {
+				where.randomize(npc, homelandIndex); // Modify to accept NPC_Object
+			} catch (ArrayIndexOutOfBoundsException ex) {
+				System.out.println(ex.getMessage());
+			}
+			
+			try {
+				who.randomize(npc, npc.getRace()); // Modify to accept NPC_Object
+			} catch (NullPointerException ex) {
+				System.out.println(ex.getMessage());
+			}
+			
+			who.profession(npc); // Modify to accept NPC_Object
+			npcList.add(npc);
 		}
-		return results;
-            
-
-    }
+		return npcList;
+	}
+	
     
     public static void menu() {
     	System.out.print("Choose a nation from which to generate NPCs:");

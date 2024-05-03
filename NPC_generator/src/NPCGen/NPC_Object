@@ -10,7 +10,8 @@ public class NPC_Object{
 	private int weight = 0;
 	private int age = 0;
 	private String hairColor = null;
-	private String eyColor = null;
+	private String hairStyle = null;
+	private String eyeColor = null;
 	private String job = null;
 	private String sex = null;
 	private String nationality = null;
@@ -19,14 +20,15 @@ public class NPC_Object{
 	private String sName = "";
 	private String cName = "";
 
-  	public NPC_Object(String race, String height, int weight, int age, String hairColor, String eyColor, String job,
+  	public NPC_Object(String race, String height, int weight, int age, String hairColor, String hairStyle, String eyeColor, String job,
 			String sex, String nationality, String fName, String lName, String sName, String cName) {
 		this.race = race;
 		this.height = height;
 		this.weight = weight;
 		this.age = age;
+		this.hairStyle = hairStyle;
 		this.hairColor = hairColor;
-		this.eyColor = eyColor;
+		this.eyeColor = eyeColor;
 		this.job = job;
 		this.sex = sex;
 		this.nationality = nationality;
@@ -35,6 +37,27 @@ public class NPC_Object{
 		this.sName = sName;
 		this.cName = cName;
 	}  
+
+	@Override
+	public String toString() {
+    	return "NPC_Object{" +
+           "race='" + race + '\'' +
+           ", height='" + height + '\'' +
+           ", weight=" + weight +
+           ", age=" + age +
+		   ", hairStyle='" + hairStyle + '\'' +
+           ", hairColor='" + hairColor + '\'' +
+           ", eyeColor='" + eyeColor + '\'' +
+           ", job='" + job + '\'' +
+           ", sex='" + sex + '\'' +
+           ", nationality='" + nationality + '\'' +
+           ", fName='" + fName + '\'' +
+           ", lName='" + lName + '\'' +
+           ", sName='" + sName + '\'' +
+           ", cName='" + cName + '\'' +
+           '}';
+}
+
 
 	public String getRace() {
 		return race;
@@ -76,12 +99,12 @@ public class NPC_Object{
 		this.hairColor = hairColor;
 	}
 
-	public String getEyColor() {
-		return eyColor;
+	public String geteyeColor() {
+		return eyeColor;
 	}
 
-	public void setEyColor(String eyColor) {
-		this.eyColor = eyColor;
+	public void seteyeColor(String eyeColor) {
+		this.eyeColor = eyeColor;
 	}
 
 	public String getJob() {

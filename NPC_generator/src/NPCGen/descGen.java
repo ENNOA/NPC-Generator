@@ -25,7 +25,7 @@ public class descGen{
                         "Long and wavy", "Short and Wavy", "bowl cut", };
     String[] eyeColor={"Dark Brown","Light Brown", "bright Blue","deep blue"," dark green","light green", "Dark hazel", "Hazel", "light amber", "Gray"};
 
-    public void randomize(String specie) throws IOException{
+    public void randomize(NPC_Object npc, String specie) throws IOException{
         if (specie.equalsIgnoreCase("Dragonborn")){
             age=(gen.nextInt(15,81));
             height= (roll.getDiceRoll(8,2)+66);
@@ -183,9 +183,15 @@ public class descGen{
             eyes= "No Data";//eyeColor[(gen.nextInt(eyeColor.length))];
             hair= "no data";//hairColor[(gen.nextInt(hairColor.length))]+" "+hairstyle[(gen.nextInt(hairstyle.length))];
         }
+
+        npc.setAge = age;
+        npc.setHeight = height/12+"'"+height%12+"\"";
+        npc.setWeight = weight;
+        npc.setEyColor = eyes;
+        npc.setHairColor = hair;
     }
     
-    public void profession() throws IOException{
+    public void profession(NPC_Object npc) throws IOException{
     	//1D arrays
     	String[] Agri=lineReader(new File("/NPC generator/src/texts/Agriculture.txt"));
     	String[] Arch=lineReader(new File("/NPC generator/src/texts/Architecture.txt"));
@@ -233,10 +239,20 @@ public class descGen{
         case 14: job= Unem[(gen.nextInt(Unem.length))];
     		break;
         }
+        npc.setJob = job;
     }
 
     public String toString(){
         return "Age: "+age+"\nCareer: "+job+"\nHeight: "+height/12+"'"+(height%12)+"\nWeight: "+weight+"\nEyes: "+eyes+"\nHair: "+hair;
+    }
+
+    public void addInfo(NPC_Object npc){
+        npc.setAge = age;
+        npc.setJob = job;
+        npc.setHeight = height/12+"'"+height%12+"\"";
+        npc.setWeight = weight;
+        npc.setEyColor = eyes;
+        npc.setHairColor = hair;
     }
     
     public static String[] lineReader(File filename) throws IOException {
